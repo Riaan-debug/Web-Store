@@ -31,7 +31,7 @@ A modern web store built with React, Redux, and React-Bootstrap. This project al
    npm install
    npm start
    ```
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. Open [http://localhost:3032](http://localhost:3032) in your browser.
 
 ### Submission Note
 - **Do NOT include the `node_modules` folder in your submission.**

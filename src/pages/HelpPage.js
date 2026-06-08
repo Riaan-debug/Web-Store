@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Card } from 'react-bootstrap';
-import BackToTop from '../components/BackToTop';
 
 const HelpPage = () => {
   return (
@@ -40,7 +39,6 @@ const HelpPage = () => {
         </Card>
       </Container>
       <div style={{ height: 70 }} />
-      <BackToTop />
     </div>
   );
 };

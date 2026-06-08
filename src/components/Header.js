@@ -1,11 +1,12 @@
 import React from 'react';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button, Badge } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../redux/userSlice';
 
 const Header = () => {
   const user = useSelector(state => state.user.user);
+  const cartCount = useSelector(state => state.cart.items.length);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,12 +18,17 @@ const Header = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand as={Link} to="/">Web Store</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Fitness Gear Store</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/store">Store</Nav.Link>
-            <Nav.Link as={Link} to="/cart">Cart</Nav.Link>
+            <Nav.Link as={Link} to="/cart">
+              Cart
+              {cartCount > 0 && (
+                <Badge bg="success" pill className="ms-1">{cartCount}</Badge>
+              )}
+            </Nav.Link>
             <Nav.Link as={Link} to="/help">Help</Nav.Link>
           </Nav>
           <Nav>
@@ -44,4 +50,4 @@ const Header = () => {
   );
 };
 
-export default Header; 
+export default Header;

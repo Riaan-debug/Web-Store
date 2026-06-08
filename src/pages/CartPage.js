@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, clearCart, setShipment, addToCart } from '../redux/cartSlice';
 import { Container, Table, Button, Alert, Form } from 'react-bootstrap';
-import BackToTop from '../components/BackToTop';
 
 const shipmentOptions = [
   { label: 'Standard (3-5 days) - R50', value: 50 },
@@ -17,6 +16,8 @@ const shippingStages = [
   'Out for Delivery',
   'Delivered',
 ];
+
+const stageDelays = [1200, 1500, 1500, 1500];
 
 const CartPage = () => {
   const cart = useSelector(state => state.cart.items);
@@ -88,16 +89,17 @@ const CartPage = () => {
     setShipmentError(false);
     setCheckedOut(true);
     dispatch(clearCart());
-    setShippingStage(1);
+    setShippingStage(0);
   };
 
   React.useEffect(() => {
-    if (checkedOut && shippingStage === 0) {
-      const timer = setTimeout(() => {
-        setShippingStage(1);
-      }, 1200);
-      return () => clearTimeout(timer);
-    }
+    if (!checkedOut || shippingStage >= shippingStages.length - 1) return;
+
+    const timer = setTimeout(() => {
+      setShippingStage((prev) => prev + 1);
+    }, stageDelays[shippingStage] ?? 1500);
+
+    return () => clearTimeout(timer);
   }, [checkedOut, shippingStage]);
 
   const isLoggedIn = !!user;
@@ -125,14 +127,13 @@ const CartPage = () => {
             {detailsError}
           </Alert>
         )}
-        {checkedOut && shippingStage <= 1 && (
+        {checkedOut && (
           <div style={{ marginBottom: 24 }}>
-            <Alert variant={shippingStage === 1 ? 'success' : 'info'}>
-              {shippingStage === 0
-                ? 'Shipping progress: Order placed!'
-                : 'Shipping progress: Processing...'}
+            <Alert variant={shippingStage === shippingStages.length - 1 ? 'success' : 'info'}>
+              Shipping progress: {shippingStages[shippingStage]}
+              {shippingStage === shippingStages.length - 1 && ' — Thank you for your order!'}
             </Alert>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16 }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
               {shippingStages.map((stage, idx) => (
                 <div key={stage} style={{ textAlign: 'center' }}>
                   <div
@@ -140,8 +141,8 @@ const CartPage = () => {
                       width: 32,
                       height: 32,
                       borderRadius: '50%',
-                      background: idx <= 1 && idx <= shippingStage ? '#198754' : '#dee2e6',
-                      color: idx <= 1 && idx <= shippingStage ? 'white' : '#6c757d',
+                      background: idx <= shippingStage ? '#198754' : '#dee2e6',
+                      color: idx <= shippingStage ? 'white' : '#6c757d',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -307,7 +308,6 @@ const CartPage = () => {
         )}
         <div style={{ height: 70 }} />
       </Container>
-      <BackToTop />
     </div>
   );
 };

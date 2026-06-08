@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { loadUser } from './persistState';
 
 const initialState = {
-  user: null,
+  user: loadUser(),
   error: null,
 };
 
@@ -28,4 +29,4 @@ const userSlice = createSlice({
 });
 
 export const { register, login, logout, setError } = userSlice.actions;
-export default userSlice.reducer; 
+export default userSlice.reducer;

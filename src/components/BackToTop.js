@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
 
 const BackToTop = () => {
   const [visible, setVisible] = useState(false);
@@ -45,4 +44,4 @@ const BackToTop = () => {
   ) : null;
 };
 
-export default BackToTop; 
+export default BackToTop;

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
 
 import yogamats from '../images/yogamats.jpg';
 import dumbbell from '../images/dumbbell.webp';
@@ -13,56 +12,56 @@ import pushupbars from '../images/pushupbars.webp';
 const initialState = {
   products: [
     {
-      id: uuidv4(),
+      id: 'prod-yoga-mat',
       name: 'Yoga Mat',
       description: 'Non-slip, eco-friendly, available in various colors.',
       price: 299,
       image: yogamats,
     },
     {
-      id: uuidv4(),
+      id: 'prod-dumbbell-set',
       name: 'Dumbbell Set',
       description: 'Adjustable weights, neoprene coating for comfort.',
       price: 799,
       image: dumbbell,
     },
     {
-      id: uuidv4(),
+      id: 'prod-water-bottle',
       name: 'Water Bottle',
       description: 'Stainless steel, insulated, 1L capacity.',
       price: 199,
       image: waterbottle,
     },
     {
-      id: uuidv4(),
+      id: 'prod-resistance-bands',
       name: 'Resistance Bands',
       description: 'Set of 5 bands, different strengths for all workouts.',
       price: 249,
       image: resistancebands,
     },
     {
-      id: uuidv4(),
+      id: 'prod-jump-rope',
       name: 'Jump Rope',
       description: 'Adjustable length, smooth ball bearings.',
       price: 149,
       image: jumprope,
     },
     {
-      id: uuidv4(),
+      id: 'prod-foam-roller',
       name: 'Foam Roller',
       description: 'High-density foam, perfect for muscle recovery.',
       price: 349,
       image: foamroller,
     },
     {
-      id: uuidv4(),
+      id: 'prod-fitness-tracker',
       name: 'Fitness Tracker',
       description: 'Tracks heart rate, steps, and sleep.',
       price: 1299,
       image: fitnesstracker,
     },
     {
-      id: uuidv4(),
+      id: 'prod-push-up-bars',
       name: 'Push-Up Bars',
       description: 'Ergonomic design, anti-slip base for safety.',
       price: 229,
@@ -82,4 +81,4 @@ const productsSlice = createSlice({
 });
 
 export const { setProducts } = productsSlice.actions;
-export default productsSlice.reducer; 
+export default productsSlice.reducer;

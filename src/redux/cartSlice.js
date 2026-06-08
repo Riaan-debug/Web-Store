@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { loadCart } from './persistState';
+
+const savedCart = loadCart();
 
 const initialState = {
-  items: [],
-  shipment: null,
+  items: savedCart.items,
+  shipment: savedCart.shipment,
 };
 
 const cartSlice = createSlice({
@@ -26,4 +29,4 @@ const cartSlice = createSlice({
 });
 
 export const { addToCart, removeFromCart, clearCart, setShipment } = cartSlice.actions;
-export default cartSlice.reducer; 
+export default cartSlice.reducer;

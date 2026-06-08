@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { loginSchema } from '../utils/validation';
 import { login, setError } from '../redux/userSlice';
 import { Button, Container, Alert } from 'react-bootstrap';
-import BackToTop from '../components/BackToTop';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
@@ -131,7 +130,6 @@ const LoginPage = () => {
           </button>
         </div>
       </Container>
-      <BackToTop />
     </>
   );
 };

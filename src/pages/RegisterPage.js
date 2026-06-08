@@ -5,7 +5,6 @@ import { registrationSchema } from '../utils/validation';
 import { register, setError } from '../redux/userSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { Button, Container, Alert } from 'react-bootstrap';
-import BackToTop from '../components/BackToTop';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
@@ -88,7 +87,6 @@ const RegisterPage = () => {
           </button>
         </div>
       </Container>
-      <BackToTop />
     </>
   );
 };

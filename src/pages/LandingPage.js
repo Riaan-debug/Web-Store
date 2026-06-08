@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Button, Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import BackToTop from '../components/BackToTop';
 
 const features = [
   { icon: '💪', title: 'Quality Gear', desc: 'Top brands and durable equipment.' },
@@ -43,7 +42,6 @@ const LandingPage = () => {
         </Card>
       </Container>
       <div style={{ height: 70 }} />
-      <BackToTop />
     </div>
   );
 };

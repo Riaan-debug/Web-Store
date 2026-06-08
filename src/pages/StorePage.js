@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProductCard from '../components/ProductCard';
 import { addToCart } from '../redux/cartSlice';
 import { Container, Row, Col, Modal, Button } from 'react-bootstrap';
-import BackToTop from '../components/BackToTop';
 
 const StorePage = () => {
   const products = useSelector(state => state.products.products);
@@ -51,7 +50,6 @@ const StorePage = () => {
           </Modal.Footer>
         </Modal>
       </Container>
-      <BackToTop />
     </div>
   );
 };
